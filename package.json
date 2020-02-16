@@ -1,0 +1,29 @@
+{
+  "name": "bardinbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@danreeves/helper-bot": "0.0.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "xo": "^0.26.1"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "trailingComma": "all",
+    "bracketSpacing": true
+  },
+  "xo": {
+    "prettier": true,
+    "space": 2
+  }
+}
