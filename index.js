@@ -17,6 +17,12 @@ helper
     }),
   )
   .use(
+    new Responder({
+      command: /^oi/gi,
+      response: "OI!",
+    }),
+  )
+  .use(
     new RoleReactions({
       // IDs of channels to refresh on booting
       channels: ["673040355041476621"],
