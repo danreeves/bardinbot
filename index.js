@@ -1,4 +1,5 @@
 require("dotenv").config();
+const micro = require("micro");
 const HelperBot = require("@danreeves/helper-bot");
 const DontReplyToSelf = require("@danreeves/helper-bot/middleware/dont-reply-to-self");
 const Responder = require("@danreeves/helper-bot/middleware/responder");
@@ -14,3 +15,9 @@ helper
     }),
   )
   .start();
+
+const server = micro(async () => {
+  return `Bot Bardin is online. Uptime: ${helper.bot.uptime}`;
+});
+
+server.listen(process.env.PORT);

@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@danreeves/helper-bot": "0.0.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "micro": "^9.3.4"
   },
   "devDependencies": {
     "prettier": "^1.19.1",
