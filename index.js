@@ -18,8 +18,11 @@ helper
   )
   .use(
     new RoleReactions({
+      // IDs of channels to refresh on booting
       channels: ["673040355041476621"],
+      // IDs of messages to watch
       messages: ["678761819547893762"],
+      // Emoji ID: Role name
       mapping: {
         "678780524399034370": "VT2",
         "678780728405655562": "DRG",
