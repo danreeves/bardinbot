@@ -5,6 +5,7 @@ const DontReplyToSelf = require("@danreeves/helper-bot/middleware/dont-reply-to-
 const Responder = require("@danreeves/helper-bot/middleware/responder");
 
 const RoleReactions = require("./role-reactions");
+const DefaultRole = require("./default-role");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
@@ -38,6 +39,7 @@ helper
       },
     }),
   )
+  .use(new DefaultRole("Comfy Camper"))
   .start();
 
 const server = micro(async () => {

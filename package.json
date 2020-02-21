@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@danreeves/helper-bot": "^0.1.0",
+    "@danreeves/helper-bot": "^0.2.0",
     "dotenv": "^8.2.0",
     "micro": "^9.3.4"
   },
