@@ -1,6 +1,9 @@
 const { readFileSync } = require("fs");
 const badwordsContent = readFileSync("./bad-words.txt", "utf8");
-const badwords = badwordsContent.split("\n").map(str => str.trim());
+const badwords = badwordsContent
+  .split("\n")
+  .map(str => str.trim())
+  .filter(str => str.length > 0);
 
 console.log(badwords);
 
