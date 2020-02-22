@@ -1,5 +1,5 @@
 const { readFileSync } = require("fs");
-const badwordsContent = readFileSync("./bad-words.txt");
+const badwordsContent = readFileSync("./bad-words.txt", "utf8");
 const badwords = badwordsContent.split("\n").map(str => str.trim());
 
 module.exports = class BadWords {
