@@ -13,8 +13,8 @@ module.exports = class BadWords {
       } else {
         const newContents = matches.reduce((str, match) => {
           return str.replace(match, "umgak");
-        }, message.contents);
-        message.reply(newContents);
+        }, message.content);
+        message.reply(`you said: ${newContents}`);
         message.delete();
       }
     }
