@@ -3,10 +3,11 @@ const badwordsContent = readFileSync("./bad-words.txt", "utf8");
 const badwords = badwordsContent.split("\n").map(str => str.trim());
 
 module.exports = class BadWords {
-  message(message, _state, kill) {
+  message(message) {
     const matches = badwords.filter(word => message.content.includes(word));
     if (matches.length > 0) {
-      kill(); // Don't do anything after this
+      // Is this broken?
+      // kill(); // Don't do anything after this
       if (message.editable) {
         message.edit("UMGAK");
       } else {
