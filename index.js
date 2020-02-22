@@ -6,11 +6,13 @@ const Responder = require("@danreeves/helper-bot/middleware/responder");
 
 const RoleReactions = require("./role-reactions");
 const DefaultRole = require("./default-role");
+const BadWords = require("./bad-words");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
 helper
   .use(new DontReplyToSelf())
+  .use(new BadWords())
   .use(
     new Responder({
       command: /know what i think/gi,
