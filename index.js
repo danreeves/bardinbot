@@ -12,7 +12,7 @@ const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
 helper
   .use(new DontReplyToSelf())
-  // .use(new BadWords())
+  .use(new BadWords())
   .use(
     new Responder({
       command: /know what i think/gi,
