@@ -20,9 +20,11 @@ module.exports = class BadWords {
     if (matches.length > 0) {
       kill(); // Don't do anything after this
 
-      const newContents = matches.reduce((str, match) => {
-        return str.replace(match, "umgak");
-      }, message.content);
+      const newContents = matches
+        .reduce((str, match) => {
+          return str.replace(match, " umgak ");
+        }, message.content)
+        .trim();
 
       if (message.deletable) {
         message.reply(`you said: ${newContents}`);
