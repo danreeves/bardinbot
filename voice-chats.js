@@ -42,12 +42,11 @@ module.exports = class VoiceChats {
 
       // Deleting old rooms
       if (oldUser.voiceChannel) {
-        console.log(oldUser.voiceChannel);
         const oldVoiceChannel = oldUser.voiceChannel;
         const isGeneratedChannel = oldVoiceChannel.name.includes(
           this.channelTemplate.replace("%", ""),
         );
-        const isEmpty = oldVoiceChannel.members.length === 0;
+        const isEmpty = oldVoiceChannel.members.array().length === 0;
         if (isGeneratedChannel && isEmpty) {
           oldVoiceChannel.delete("It's empty");
         }
