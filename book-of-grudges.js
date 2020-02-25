@@ -1,6 +1,6 @@
 const postgres = require("postgres");
 
-const sql = postgres(process.env.PG_URL);
+const sql = postgres(process.env.PG_URL, { debug: console.log });
 
 function bans(newBans) {
   return newBans
@@ -11,8 +11,8 @@ function bans(newBans) {
 }
 
 module.exports = class BookOfGrudges {
-  init() {
-    const res = sql`
+  async init() {
+    const res = await sql`
       CREATE TABLE IF NOT EXISTS bans (
         userid varchar(45) NOT NULL,
         bans integer NOT NULL DEFAULT '0'
@@ -46,7 +46,7 @@ module.exports = class BookOfGrudges {
           newBans,
         )} ON CONFLICT (userid) DO UPDATE bans = excluded.bans`;
 
-        const result = await sql`${query}`;
+        const result = await sql`${sql(query)}`;
 
         console.log(result);
       }
