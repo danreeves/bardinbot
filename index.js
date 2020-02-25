@@ -7,6 +7,7 @@ const Responder = require("@danreeves/helper-bot/middleware/responder");
 const RoleReactions = require("./role-reactions");
 const DefaultRole = require("./default-role");
 const BadWords = require("./bad-words");
+const Hello = require("./hello");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
@@ -44,9 +45,11 @@ helper
         "678782811066466384": "RoR",
         "678783520201637907": "Conan",
         "678784015720775710": "Minecraft",
+        "681716545230995479": "Monster Hunter",
       },
     }),
   )
+  .use(new Hello())
   .start();
 
 const server = micro(async () => {
