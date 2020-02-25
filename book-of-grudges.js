@@ -2,18 +2,6 @@ const postgres = require("postgres");
 
 const sql = postgres(process.env.PG_URL, { debug: console.log });
 
-function bans(newBans) {
-  return newBans
-    .map(user => {
-      return `('${user.userid}', ${user.bans})`;
-    })
-    .join(", ");
-}
-
-function sqlIn(ids) {
-  return "( " + ids.map(id => `'${id}'`).join(", ") + " )";
-}
-
 module.exports = class BookOfGrudges {
   async init() {
     const res1 = await sql`DROP TABLE IF EXISTS bookofgrudges;`;
@@ -35,11 +23,12 @@ module.exports = class BookOfGrudges {
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        userIds.push("not a real id");
 
         const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid = ANY('{${sql(
           userIds,
         )}}')`;
+
+        console.log("numBans", numBans);
 
         const newBans = userIds.map(id => {
           const userResult = numBans.find(result => result.userid === id);
@@ -48,7 +37,7 @@ module.exports = class BookOfGrudges {
           return { userid: id, bans: newBans };
         });
 
-        console.log(newBans);
+        console.log("newBans", newBans);
 
         const result = await sql`INSERT INTO bookofgrudges ${sql(
           newBans,
