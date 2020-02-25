@@ -12,13 +12,15 @@ function bans(newBans) {
 
 module.exports = class BookOfGrudges {
   init() {
-    sql`
+    const res = sql`
       CREATE TABLE IF NOT EXISTS bans (
         userid varchar(45) NOT NULL,
         bans integer NOT NULL DEFAULT '0'
       )
     `;
+    console.log(res);
   }
+
   async message(msg) {
     try {
       if (msg.content.startsWith("!ban")) {
@@ -40,9 +42,11 @@ module.exports = class BookOfGrudges {
         console.log(newBans);
         console.log(bans(newBans));
 
-        const result = await sql`INSERT INTO bans (userid, bans) VALUES ${bans(
+        const query = `INSERT INTO bans (userid, bans) VALUES ${bans(
           newBans,
         )} ON CONFLICT (userid) DO UPDATE bans = excluded.bans`;
+
+        const result = await sql`${query}`;
 
         console.log(result);
       }
