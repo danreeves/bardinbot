@@ -17,7 +17,7 @@ module.exports = class BookOfGrudges {
     try {
       if (msg.content.startsWith("!ban")) {
         const members = msg.mentions.members.array();
-        if (!members) return;
+        if (!members.length > 0) return;
 
         const userIds = members.map(user => user.id);
 
