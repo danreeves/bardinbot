@@ -40,9 +40,9 @@ module.exports = class BookOfGrudges {
         console.log(newBans);
         console.log(bans(newBans));
 
-        const result = await sql`INSERT INTO bans (userid, bans) VALUES (${bans(
+        const result = await sql`INSERT INTO bans (userid, bans) VALUES ${bans(
           newBans,
-        )}) ON CONFLICT (userid) DO UPDATE bans = excluded.bans`;
+        )} ON CONFLICT (userid) DO UPDATE bans = excluded.bans`;
 
         console.log(result);
       }
