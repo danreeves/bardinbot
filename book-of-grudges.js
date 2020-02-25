@@ -31,9 +31,7 @@ module.exports = class BookOfGrudges {
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN (${userIds.join(
-          ", ",
-        )})`;
+        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN ${userIds}`;
 
         const newBans = userIds.map(id => {
           const userResult = numBans.find(result => result.userid === id);
@@ -41,6 +39,8 @@ module.exports = class BookOfGrudges {
           const newBans = bans + 1;
           return { userid: id, bans: newBans };
         });
+
+        console.log(newBans);
 
         const result = await sql`INSERT INTO bookofgrudges ${sql(
           newBans,
