@@ -27,11 +27,11 @@ module.exports = class BookOfGrudges {
   async message(msg) {
     try {
       if (msg.content.startsWith("!ban")) {
-        const members = msg.mentions.members;
+        const members = msg.mentions.members.array();
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid LIKE ${sql(
+        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN ${sql(
           userIds,
         )}`;
 
