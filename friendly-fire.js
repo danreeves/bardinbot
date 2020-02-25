@@ -23,7 +23,7 @@ module.exports = class FriendlyFire {
         if (mentions.users.array().length === 1) {
           // Bot is mentioned but no roles or channels are
           // and the users length is 1 which means only the bot is mentioned
-          msg.reply(ranomItem(reactions));
+          msg.reply(randomItem(reactions));
           kill();
         }
       }
