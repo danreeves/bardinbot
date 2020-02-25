@@ -52,8 +52,8 @@ helper
   .use(
     new VoiceChats({
       category: "adventures",
-      startChannel: "Create a room",
-      channelTemplate: "%'s room'",
+      startChannel: "new party",
+      channelTemplate: "%'s party",
     }),
   )
   .use(new Hello())

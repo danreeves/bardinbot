@@ -8,7 +8,8 @@ module.exports = class VoiceChats {
   }
 
   newChannelName(user) {
-    return this.channelTemplate.replace("%", user.username);
+    const username = user.nickname || user.user.username;
+    return this.channelTemplate.replace("%", username);
   }
 
   async voiceStateUpdate(oldUser, user) {
@@ -41,6 +42,7 @@ module.exports = class VoiceChats {
 
       // Deleting old rooms
       if (oldUser.voiceChannel) {
+        console.log(oldUser.voiceChannel);
         const oldVoiceChannel = oldUser.voiceChannel;
         const isGeneratedChannel = oldVoiceChannel.name.includes(
           this.channelTemplate.replace("%", ""),
