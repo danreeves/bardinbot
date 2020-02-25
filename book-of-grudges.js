@@ -31,7 +31,7 @@ module.exports = class BookOfGrudges {
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN ${sql(
+        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid LIKE ${sql(
           userIds,
         )}`;
 
