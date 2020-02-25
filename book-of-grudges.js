@@ -2,6 +2,14 @@ const postgres = require("postgres");
 
 const sql = postgres(process.env.PG_URL);
 
+function bans(newBans) {
+  return newBans
+    .map(user => {
+      return `("${user.userid}", ${user.bans})`;
+    })
+    .join(", ");
+}
+
 module.exports = class BookOfGrudges {
   init() {
     sql`
@@ -30,11 +38,10 @@ module.exports = class BookOfGrudges {
         });
 
         console.log(newBans);
+        console.log(bans(newBans));
 
-        const result = await sql`INSERT INTO bans (userid, bans) VALUES (${sql(
+        const result = await sql`INSERT INTO bans (userid, bans) VALUES (${bans(
           newBans,
-          "userid",
-          "bans",
         )}) ON CONFLICT (userid) DO UPDATE bans = excluded.bans`;
 
         console.log(result);
