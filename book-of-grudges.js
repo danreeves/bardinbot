@@ -13,10 +13,11 @@ function bans(newBans) {
 module.exports = class BookOfGrudges {
   async init() {
     const res = await sql`
-      CREATE TABLE IF NOT EXISTS bans (
+      CREATE TABLE IF NOT EXISTS bookofgrudges (
         userid varchar(45) NOT NULL,
         bans integer NOT NULL DEFAULT '0'
-      )
+      );
+      DROP TABLE IF EXISTS bans;
     `;
     console.log(res);
   }
@@ -28,7 +29,7 @@ module.exports = class BookOfGrudges {
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        const numBans = await sql`SELECT (userid, bans) FROM bans WHERE userid IN (${userIds.join(
+        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN (${userIds.join(
           ", ",
         )})`;
 
@@ -42,7 +43,7 @@ module.exports = class BookOfGrudges {
         console.log(newBans);
         console.log(bans(newBans));
 
-        const result = await sql`INSERT INTO bans ${sql(
+        const result = await sql`INSERT INTO bookofgrudges ${sql(
           newBans,
           "userid",
           "bans",
