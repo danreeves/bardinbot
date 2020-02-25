@@ -8,6 +8,7 @@ const RoleReactions = require("./role-reactions");
 const DefaultRole = require("./default-role");
 const BadWords = require("./bad-words");
 const Hello = require("./hello");
+const VoiceChats = require("./voice-chats");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
@@ -47,6 +48,13 @@ helper
         "678784015720775710": "Minecraft",
         "681716545230995479": "Monster Hunter",
       },
+    }),
+  )
+  .use(
+    new VoiceChats({
+      category: "adventures"
+      startChannel: "Create a room",
+      channelTemplate: "%'s room'",
     }),
   )
   .use(new Hello())
