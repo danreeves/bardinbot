@@ -7,7 +7,7 @@ module.exports = class BookOfGrudges {
     sql`
       CREATE TABLE IF NOT EXISTS bans (
         userid varchar(45) NOT NULL,
-        bans integer NOT NULL DEFAULT '0',
+        bans integer NOT NULL DEFAULT '0'
       )
     `;
   }
