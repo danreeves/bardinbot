@@ -18,9 +18,7 @@ module.exports = class BookOfGrudges {
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        const numBans = await sql`SELECT (userid, bans) FROM bans WHERE userid IN ${sql(
-          userIds,
-        )}`;
+        const numBans = await sql`SELECT (userid, bans) FROM bans WHERE userid IN (${userIds})`;
         console.log(numBans);
       }
     } catch (error) {
