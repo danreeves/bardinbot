@@ -39,7 +39,6 @@ module.exports = class BookOfGrudges {
 
         const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN (${sql(
           userIds,
-          "userid",
         )})`;
 
         const newBans = userIds.map(id => {
