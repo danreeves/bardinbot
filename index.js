@@ -8,12 +8,14 @@ const RoleReactions = require("./role-reactions");
 const BadWords = require("./bad-words");
 const Hello = require("./hello");
 const VoiceChats = require("./voice-chats");
+const FriendlyFire = require("./friendly-fire");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
 helper
   .use(new DontReplyToSelf())
   .use(new BadWords())
+  .use(new FriendlyFire())
   .use(
     new Responder({
       command: /know what i think/gi,
