@@ -37,7 +37,7 @@ module.exports = class BookOfGrudges {
         const userIds = members.map(user => user.id);
         userIds.push("not a real id");
 
-        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid = ANY({'${sql(
+        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid = ANY('{${sql(
           userIds,
         )}}')`;
 
