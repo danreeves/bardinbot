@@ -28,11 +28,17 @@ helper
   .use(
     new RoleReactions({
       // IDs of channels to refresh on booting
-      channels: ["673040355041476621"],
+      channels: [
+        "673040355041476621", // #rules
+      ],
       // IDs of messages to watch
-      messages: ["678761819547893762"],
+      messages: [
+        "681707767085793334", // Rules
+        "681708036188143657", // LFG
+      ],
       // Emoji ID: Role name
       mapping: {
+        "678746053301764116": "Comfy Camper",
         "678780524399034370": "VT2",
         "678780728405655562": "DRG",
         "678782811066466384": "RoR",
@@ -41,7 +47,6 @@ helper
       },
     }),
   )
-  .use(new DefaultRole("Comfy Camper"))
   .start();
 
 const server = micro(async () => {
