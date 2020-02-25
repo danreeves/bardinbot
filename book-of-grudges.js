@@ -34,11 +34,12 @@ module.exports = class BookOfGrudges {
         const members = msg.mentions.members.array();
         if (!members) return;
 
-        const userIds = members.map(user => user.id);
-        userIds.push("not a real id");
+        const userIds = members.map(user => ({ userid: user.id }));
+        userIds.push({ userid: "not a real id" });
 
         const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN (${sql(
           userIds,
+          "userid",
         )})`;
 
         const newBans = userIds.map(id => {
