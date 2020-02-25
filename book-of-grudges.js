@@ -4,16 +4,13 @@ const sql = postgres(process.env.PG_URL, { debug: console.log });
 
 module.exports = class BookOfGrudges {
   async init() {
-    const res1 = await sql`DROP TABLE bookofgrudges;`;
-    console.log(res1);
-    const res = await sql`
+    await sql`
       CREATE TABLE IF NOT EXISTS bookofgrudges (
         userid varchar(45) UNIQUE NOT NULL,
         bans integer NOT NULL DEFAULT '0',
         PRIMARY KEY (userid)
       );
     `;
-    console.log(res);
   }
 
   async message(msg) {
@@ -41,9 +38,11 @@ module.exports = class BookOfGrudges {
           "bans",
         )} ON CONFLICT (userid) DO UPDATE SET bans = excluded.bans`;
 
-        const reply = `this one's going in the book!${newBans.map(result => {
-          return `\n <@${result.userid}> has ${result.bans} bans!`;
-        })}`;
+        const reply = `this one's going in the book!${newBans
+          .map(result => {
+            return `\n<@${result.userid}> has ${result.bans} bans!`;
+          })
+          .join("")}`;
         msg.reply(reply);
       }
     } catch (error) {
