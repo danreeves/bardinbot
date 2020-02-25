@@ -12,10 +12,13 @@ function bans(newBans) {
 
 module.exports = class BookOfGrudges {
   async init() {
+    const res1 = await sql`DROP TABLE IF EXISTS bookofgrudges;`;
+    console.log(res1);
     const res = await sql`
       CREATE TABLE IF NOT EXISTS bookofgrudges (
-        userid varchar(45) NOT NULL,
-        bans integer NOT NULL DEFAULT '0'
+        userid varchar(45) UNIQUE NOT NULL,
+        bans integer NOT NULL DEFAULT '0',
+        PRIMARY KEY (userid)
       );
     `;
     console.log(res);
