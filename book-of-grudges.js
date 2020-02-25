@@ -23,7 +23,7 @@ module.exports = class BookOfGrudges {
         )})`;
 
         const newBans = userIds.map(id => {
-          const userResult = numBads.find(result => result.userid === id);
+          const userResult = numBans.find(result => result.userid === id);
           const bans = (userResult && userResult.bans) || 0;
           const newBans = bans + 1;
           return { userid: id, bans: newBans };
