@@ -18,8 +18,22 @@ module.exports = class BookOfGrudges {
         if (!members) return;
 
         const userIds = members.map(user => user.id);
-        const numBans = await sql`SELECT (userid, bans) FROM botbardin.bans WHERE userid IN (${userIds.join(', ')})`;
-        console.log(numBans);
+        const numBans = await sql`SELECT (userid, bans) FROM bans WHERE userid IN (${userIds.join(
+          ", ",
+        )})`;
+
+        const newBans = userIds.map(id => {
+          const userResult = numBands.find(result => result.userid === id);
+          const bans = (userResult && userResult.bans) || 0;
+          const newBans = bans + 1;
+          return { userid: id, bans: newBans };
+        });
+
+        const result = await sql`INSERT INTO bans ${sql(
+          newBans,
+        )} ON CONFLICT (userid) DO UPDATE bans = excluded.bans`;
+
+        console.log(result);
       }
     } catch (error) {
       console.log(error);
