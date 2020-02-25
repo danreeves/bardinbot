@@ -4,7 +4,7 @@ const sql = postgres(process.env.PG_URL, { debug: console.log });
 
 module.exports = class BookOfGrudges {
   async init() {
-    const res1 = await sql`DROP TABLE IF EXISTS bookofgrudges;`;
+    const res1 = await sql`DROP TABLE bookofgrudges;`;
     console.log(res1);
     const res = await sql`
       CREATE TABLE IF NOT EXISTS bookofgrudges (
@@ -28,8 +28,6 @@ module.exports = class BookOfGrudges {
           userIds,
         )}}')`;
 
-        console.log("numBans", numBans);
-
         const newBans = userIds.map(id => {
           const userResult = numBans.find(result => result.userid === id);
           const bans = (userResult && userResult.bans) || 0;
@@ -37,15 +35,16 @@ module.exports = class BookOfGrudges {
           return { userid: id, bans: newBans };
         });
 
-        console.log("newBans", newBans);
-
-        const result = await sql`INSERT INTO bookofgrudges ${sql(
+        await sql`INSERT INTO bookofgrudges ${sql(
           newBans,
           "userid",
           "bans",
         )} ON CONFLICT (userid) DO UPDATE SET bans = excluded.bans`;
 
-        console.log(result);
+        const reply = `this one's going in the book!${newBans.map(result => {
+          return `\n <@${result.userid}> has ${result.bans} bans!`;
+        })}`;
+        msg.reply(reply);
       }
     } catch (error) {
       console.log(error);
