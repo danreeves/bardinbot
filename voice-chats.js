@@ -11,7 +11,7 @@ module.exports = class VoiceChats {
     return this.channelTemplate.replace("%", user.username);
   }
 
-  voiceStateUpdate(oldUser, user) {
+  async voiceStateUpdate(oldUser, user) {
     try {
       // Creating new rooms
       if (user.voiceChannel && user.voiceChannel.name === this.startChannel) {
@@ -32,10 +32,11 @@ module.exports = class VoiceChats {
           newChannelName = `${newChannelName} (${userOwnedChannels.length})`;
         }
 
-        guild.createChannel(newChannelName, {
+        const newChannel = await guild.createChannel(newChannelName, {
           type: "voice",
           parent: category,
         });
+        user.setVoiceChannel(newChannel);
       }
 
       // Deleting old rooms

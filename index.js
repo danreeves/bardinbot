@@ -5,7 +5,6 @@ const DontReplyToSelf = require("@danreeves/helper-bot/middleware/dont-reply-to-
 const Responder = require("@danreeves/helper-bot/middleware/responder");
 
 const RoleReactions = require("./role-reactions");
-const DefaultRole = require("./default-role");
 const BadWords = require("./bad-words");
 const Hello = require("./hello");
 const VoiceChats = require("./voice-chats");
@@ -52,7 +51,7 @@ helper
   )
   .use(
     new VoiceChats({
-      category: "adventures"
+      category: "adventures",
       startChannel: "Create a room",
       channelTemplate: "%'s room'",
     }),
