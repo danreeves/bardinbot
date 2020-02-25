@@ -9,6 +9,7 @@ const BadWords = require("./bad-words");
 const Hello = require("./hello");
 const VoiceChats = require("./voice-chats");
 const FriendlyFire = require("./friendly-fire");
+const BookOfGrudges = require("./book-of-grudges");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
@@ -58,6 +59,7 @@ helper
       channelTemplate: "%'s party",
     }),
   )
+  .use(new BookOfGrudges())
   .use(new Hello())
   .start();
 
