@@ -10,6 +10,10 @@ function bans(newBans) {
     .join(", ");
 }
 
+function sqlIn(ids) {
+  return "( " + ids.map(id => `'${id}'`).join(", ") + " )";
+}
+
 module.exports = class BookOfGrudges {
   async init() {
     const res1 = await sql`DROP TABLE IF EXISTS bookofgrudges;`;
@@ -32,8 +36,7 @@ module.exports = class BookOfGrudges {
 
         const userIds = members.map(user => user.id);
         const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid IN ${sql(
-          userIds,
-          "userid",
+          sqlIn(userIds),
         )}`;
 
         const newBans = userIds.map(id => {
