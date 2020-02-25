@@ -52,7 +52,7 @@ helper
   .use(
     new VoiceChats({
       category: "adventures",
-      startChannel: "new party",
+      startChannel: "create a party",
       channelTemplate: "%'s party",
     }),
   )
