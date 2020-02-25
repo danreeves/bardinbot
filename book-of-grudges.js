@@ -24,7 +24,7 @@ module.exports = class BookOfGrudges {
 
         const userIds = members.map(user => user.id);
 
-        const numBans = await sql`SELECT (userid, bans) FROM bookofgrudges WHERE userid = ANY('{${sql(
+        const numBans = await sql`SELECT userid, bans FROM bookofgrudges WHERE userid = ANY('{${sql(
           userIds,
         )}}')`;
 
