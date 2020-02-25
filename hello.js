@@ -7,8 +7,9 @@ module.exports = class Hello {
           channel.type === "text" && channel.id === "679042808132272171",
       );
     try {
-      channel.send("This bot is up!")
+      channel.send("This bot is up!");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
+};
