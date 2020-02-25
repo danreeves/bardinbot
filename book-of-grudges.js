@@ -5,7 +5,7 @@ const sql = postgres(process.env.PG_URL);
 function bans(newBans) {
   return newBans
     .map(user => {
-      return `("${user.userid}", ${user.bans})`;
+      return `('${user.userid}', ${user.bans})`;
     })
     .join(", ");
 }
