@@ -6,6 +6,7 @@ const Responder = require("@danreeves/helper-bot/middleware/responder");
 
 const RoleReactions = require("./role-reactions");
 const BadWords = require("./bad-words");
+const Hello = require("./hello");
 const VoiceChats = require("./voice-chats");
 const FriendlyFire = require("./friendly-fire");
 const BookOfGrudges = require("./book-of-grudges");
@@ -26,6 +27,12 @@ helper
     new Responder({
       command: /^oi/gi,
       response: "OI!",
+    }),
+  )
+  .use(
+    new Responder({
+       command: /what weighs several tons/gi,
+       response: "What weighs several tonnes, draws ratmen like flies and sounds awful? If you just answered 'oh no, not another bloody bell' then you win a pumpkin, you lucky bleeder. Don't eat it all at once, because you'll need provisions on your way to destroying the wretched thing. We don't actually know if that lump they've raised in Helmgart is a real screaming bell, but better safe than sorry.",
     }),
   )
   .use(
@@ -59,6 +66,7 @@ helper
     }),
   )
   .use(new BookOfGrudges())
+  // Fix this to only post once .use(new Hello())
   .start();
 
 const server = micro(async () => {
