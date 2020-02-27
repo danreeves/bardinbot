@@ -65,7 +65,6 @@ helper
     }),
   )
   .use(new BookOfGrudges())
-  // Fix this to only post once .use(new Hello())
   .start();
 
 const server = micro(async () => {
