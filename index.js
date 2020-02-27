@@ -6,7 +6,6 @@ const Responder = require("@danreeves/helper-bot/middleware/responder");
 
 const RoleReactions = require("./role-reactions");
 const BadWords = require("./bad-words");
-const Hello = require("./hello");
 const VoiceChats = require("./voice-chats");
 const FriendlyFire = require("./friendly-fire");
 const BookOfGrudges = require("./book-of-grudges");
@@ -60,7 +59,6 @@ helper
     }),
   )
   .use(new BookOfGrudges())
-  // Fix this to only post once .use(new Hello())
   .start();
 
 const server = micro(async () => {
