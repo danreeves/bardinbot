@@ -1,13 +1,10 @@
 const { readFileSync } = require("fs");
+const random = require("./utils/random");
 const reactionFile = readFileSync("./ff_bot.txt", "utf8");
 const reactions = reactionFile
   .split("\n")
   .map(str => str.trim())
   .filter(str => str.length > 0);
-
-function randomItem(items) {
-  return items[Math.floor(Math.random() * items.length)];
-}
 
 function noMentions(collection) {
   return collection.array().length === 0;
@@ -23,7 +20,7 @@ module.exports = class FriendlyFire {
         if (mentions.users.array().length === 1) {
           // Bot is mentioned but no roles or channels are
           // and the users length is 1 which means only the bot is mentioned
-          msg.reply(randomItem(reactions));
+          msg.reply(random(reactions));
           kill();
         }
       }

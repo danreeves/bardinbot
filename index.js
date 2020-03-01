@@ -9,11 +9,13 @@ const BadWords = require("./bad-words");
 const VoiceChats = require("./voice-chats");
 const FriendlyFire = require("./friendly-fire");
 const BookOfGrudges = require("./book-of-grudges");
+const Raffle = require("./raffle");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
 helper
   .use(new DontReplyToSelf())
+  .use(new Raffle())
   .use(new BadWords())
   .use(new FriendlyFire())
   .use(
@@ -30,8 +32,9 @@ helper
   )
   .use(
     new Responder({
-       command: /what weighs several tons/gi,
-       response: "What weighs several tonnes, draws ratmen like flies and sounds awful?\nIf you just answered 'oh no, not another bloody bell' then you win a pumpkin, you lucky bleeder.\nDon't eat it all at once, because you'll need provisions on your way to destroying the wretched thing.\nWe don't actually know if that lump they've raised in Helmgart is a real screaming bell, but better safe than sorry.",
+      command: /what weighs several tons/gi,
+      response:
+        "What weighs several tonnes, draws ratmen like flies and sounds awful?\nIf you just answered 'oh no, not another bloody bell' then you win a pumpkin, you lucky bleeder.\nDon't eat it all at once, because you'll need provisions on your way to destroying the wretched thing.\nWe don't actually know if that lump they've raised in Helmgart is a real screaming bell, but better safe than sorry.",
     }),
   )
   .use(
