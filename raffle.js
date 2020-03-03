@@ -10,7 +10,7 @@ module.exports = class Raffle {
       kill();
 
       const roles = msg.mentions.roles;
-      if (!roles) return;
+      if (roles.array().length < 1) return;
 
       const members = Array.from(
         new Set(
