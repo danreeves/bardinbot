@@ -8,7 +8,7 @@ module.exports = class Annoy {
         channel =>
           channel.type === "text" && channel.id === "742569224639086592",
       );
-    console.log(bot);
+    console.log(channel);
     console.log(":)");
     this.job = new CronJob("* * * * * 0", () => {
       console.log("trying to post");
