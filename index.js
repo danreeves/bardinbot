@@ -10,6 +10,7 @@ const VoiceChats = require("./voice-chats");
 const FriendlyFire = require("./friendly-fire");
 const BookOfGrudges = require("./book-of-grudges");
 const Raffle = require("./raffle");
+const Annoy = require("./annoy");
 
 const helper = new HelperBot(process.env.DISCORD_BOT_TOKEN);
 
@@ -70,6 +71,7 @@ helper
     }),
   )
   .use(new BookOfGrudges())
+  .use(new Annoy())
   .start();
 
 const server = micro(async () => {
