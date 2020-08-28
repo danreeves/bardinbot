@@ -8,13 +8,14 @@ module.exports = class Annoy {
         channel =>
           channel.type === "text" && channel.id === "742569224639086592",
       );
-    try {
-      this.job = new CronJob("* * * * * 0", () => {
+    this.job = new CronJob("* * * * * 0", () => {
+      console.log("trying to post");
+      try {
         channel.send("Who'd like to hear a song?");
-      });
-      this.job.start();
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+    this.job.start();
   }
 };
