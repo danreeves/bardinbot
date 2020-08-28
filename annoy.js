@@ -1,13 +1,15 @@
 const { CronJob } = require("cron");
 
 module.exports = class Annoy {
-  async init(bot) {
+  init(bot) {
     const channel = bot.channels
       .array()
       .find(
         channel =>
           channel.type === "text" && channel.id === "742569224639086592",
       );
+    console.log(bot);
+    console.log(":)");
     this.job = new CronJob("* * * * * 0", () => {
       console.log("trying to post");
       try {
