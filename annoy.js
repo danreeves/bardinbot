@@ -10,7 +10,7 @@ module.exports = class Annoy {
       );
     this.job = new CronJob("0 * * * * 3", () => {
       try {
-        channel.send("have a nice poop, son <@166043701469118464>");
+        channel.send("have a nice poop, sport <@166043701469118464>");
       } catch (error) {
         console.log(error);
       }
