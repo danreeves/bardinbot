@@ -10,7 +10,7 @@ module.exports = class Annoy {
       );
     console.log(channel);
     console.log(":)");
-    this.job = new CronJob("* * * * * 0", () => {
+    this.job = new CronJob("* * * * * 1", () => {
       console.log("trying to post");
       try {
         channel.send("Who'd like to hear a song?");
