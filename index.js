@@ -71,7 +71,6 @@ helper
     }),
   )
   .use(new BookOfGrudges())
-  .use(new Annoy())
   .start();
 
 const server = micro(async () => {
