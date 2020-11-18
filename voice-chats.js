@@ -13,6 +13,7 @@ module.exports = class VoiceChats {
   }
 
   async voiceStateUpdate(oldUser, user) {
+	console.log(oldUser, user)
     try {
       // Creating new rooms
       if (user.voiceChannel && user.voiceChannel.name === this.startChannel) {
