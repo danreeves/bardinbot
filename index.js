@@ -24,14 +24,14 @@ helper
   .use(
     new Responder({
       command: /know what i think/gi,
-      response: "do I know what an elf thinks? No one does!"
-    })
+      response: "do I know what an elf thinks? No one does!",
+    }),
   )
   .use(
     new Responder({
       command: /^oi/gi,
-      response: "OI!"
-    })
+      response: "OI!",
+    }),
   )
   .use(
     new Responder({
@@ -44,12 +44,12 @@ helper
     new RoleReactions({
       // IDs of channels to refresh on booting
       channels: [
-        "673040355041476621" // #rules
+        "673040355041476621", // #rules
       ],
       // IDs of messages to watch
       messages: [
         "681707767085793334", // Rules
-        "681708036188143657" // LFG
+        "681708036188143657", // LFG
       ],
       // Emoji ID: Role name
       mapping: {
@@ -63,14 +63,14 @@ helper
         "681716545230995479": "Monster Hunter",
         "745058208669761608": "Final Fantaseers",
       },
-    })
+    }),
   )
   .use(
     new VoiceChats({
       category: "adventures",
       startChannel: "create a party",
-      channelTemplate: "%'s party"
-    })
+      channelTemplate: "%'s party",
+    }),
   )
   .use(new BookOfGrudges())
   .start();

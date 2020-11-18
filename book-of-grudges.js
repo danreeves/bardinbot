@@ -22,7 +22,7 @@ module.exports = class BookOfGrudges {
         const userIds = members.map(user => user.id);
 
         const numBans = await sql`SELECT userid, bans FROM bookofgrudges WHERE userid = ANY('{${sql(
-          userIds
+          userIds,
         )}}')`;
 
         const newBans = userIds.map(id => {
@@ -35,7 +35,7 @@ module.exports = class BookOfGrudges {
         await sql`INSERT INTO bookofgrudges ${sql(
           newBans,
           "userid",
-          "bans"
+          "bans",
         )} ON CONFLICT (userid) DO UPDATE SET bans = excluded.bans`;
 
         const reply = `this one's going in the book!${newBans
