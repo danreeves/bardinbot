@@ -4,7 +4,7 @@ module.exports = class Hello {
       .array()
       .find(
         channel =>
-          channel.type === "text" && channel.id === "679042808132272171",
+          channel.type === "text" && channel.id === "679042808132272171"
       );
     try {
       channel.send("This bot is up!");

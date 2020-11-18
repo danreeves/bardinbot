@@ -4,29 +4,19 @@
   "description": "",
   "scripts": {
     "start": "node index.js",
-    "test": "xo"
+    "fmt": "prettier --write ./*.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@danreeves/helper-bot": "^0.2.0",
     "cron": "^1.8.2",
+    "@danreeves/helper-bot": "^0.2.1",
     "dotenv": "^8.2.0",
     "micro": "^9.3.4",
     "postgres": "^1.0.2"
   },
   "devDependencies": {
-    "prettier": "^1.19.1",
-    "xo": "^0.26.1"
-  },
-  "prettier": {
-    "singleQuote": false,
-    "trailingComma": "all",
-    "bracketSpacing": true
-  },
-  "xo": {
-    "prettier": true,
-    "space": 2
+    "prettier": "^1.19.1"
   }
 }

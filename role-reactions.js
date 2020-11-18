@@ -11,8 +11,7 @@ module.exports = class RoleReactions {
     const channels = bot.channels
       .array()
       .filter(
-        channel =>
-          channel.type === "text" && this.channels.includes(channel.id),
+        channel => channel.type === "text" && this.channels.includes(channel.id)
       );
 
     channels.forEach(channel => channel.fetchMessages({ limit: 20 }));

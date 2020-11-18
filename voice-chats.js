@@ -26,7 +26,7 @@ module.exports = class VoiceChats {
           .filter(channel => channel.type === "voice")
           .filter(channel => channel.parentId === category.id);
         const userOwnedChannels = voiceChannels.filter(channel =>
-          channel.name.includes(newChannelName),
+          channel.name.includes(newChannelName)
         );
 
         if (userOwnedChannels.length > 0) {
@@ -35,7 +35,7 @@ module.exports = class VoiceChats {
 
         const newChannel = await guild.createChannel(newChannelName, {
           type: "voice",
-          parent: category,
+          parent: category
         });
         user.setVoiceChannel(newChannel);
       }
@@ -44,7 +44,7 @@ module.exports = class VoiceChats {
       if (oldUser.voiceChannel) {
         const oldVoiceChannel = oldUser.voiceChannel;
         const isGeneratedChannel = oldVoiceChannel.name.includes(
-          this.channelTemplate.replace("%", ""),
+          this.channelTemplate.replace("%", "")
         );
         const isEmpty = oldVoiceChannel.members.array().length === 0;
         if (isGeneratedChannel && isEmpty) {
