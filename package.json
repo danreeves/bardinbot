@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "node index.js",
-    "fmt": "prettier --write ./*.js"
+    "fmt": "prettier --write ./*.js",
+	"test": "true"
   },
   "keywords": [],
   "author": "",
